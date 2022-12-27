@@ -1,1 +1,0 @@
-a budget tracker application
