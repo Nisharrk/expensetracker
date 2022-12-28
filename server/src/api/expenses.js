@@ -3,10 +3,9 @@ const Expense = require("../model/schema");
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    message: "🧑‍💻",
-  });
+router.get("/", async (req, res) => {
+  const entries = await Expense.find();
+  res.json(entries);
 });
 
 router.post("/", async (req, res, next) => {
@@ -15,6 +14,10 @@ router.post("/", async (req, res, next) => {
     const createdExpense = await expense.save();
     res.json(createdExpense);
   } catch (error) {
+    console.log(error.name);
+    if (error.name === "ValidationError") {
+      res.status(422);
+    }
     next(error);
   }
 });
