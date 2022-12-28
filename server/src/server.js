@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const middlewares = require("./middlewares");
+const expenses = require("./api/expenses");
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -15,7 +16,12 @@ mongoose.connect(process.env.DATABASE_URL, {
 const app = express();
 app.use(morgan("common"));
 app.use(helmet());
-app.use(cors()); //to-do
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+); //to-do
+app.use(express.json()); // body parsing middleware
 
 const port = process.env.PORT;
 
@@ -23,7 +29,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
-// Error Handler
+app.use("/api/expenses", expenses);
+
+// Error Handlers
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
