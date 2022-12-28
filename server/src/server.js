@@ -9,7 +9,7 @@ require("dotenv").config();
 const middlewares = require("./middlewares");
 const expenses = require("./api/expenses");
 
-// Database connection
+// database connection
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
 });
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
-// Router
+// router
 app.use("/api/expenses", expenses);
 
 // Error Handlers
