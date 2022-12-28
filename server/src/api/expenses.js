@@ -3,9 +3,13 @@ const Expense = require("../model/schema");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const entries = await Expense.find();
-  res.json(entries);
+router.get("/", async (req, res, next) => {
+  try {
+    const entries = await Expense.find();
+    res.json(entries);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post("/", async (req, res, next) => {
