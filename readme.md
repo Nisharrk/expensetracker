@@ -1,4 +1,4 @@
-An expense tracker application
+# An expense tracker application
 
 ---
 
