@@ -1,1 +1,1 @@
-a budget tracker application
+An expense tracker application
