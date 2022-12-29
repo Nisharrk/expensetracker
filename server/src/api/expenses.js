@@ -39,4 +39,13 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const result = await Expense.deleteOne({ _id: req.params.id });
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
