@@ -2,7 +2,7 @@
 
 ---
 
-# Technologies used
+## Technologies used
 
 - Backend: node, express, cors, helmet, morgan
 - Database: mongodb, mongoose
