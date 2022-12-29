@@ -26,4 +26,17 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const updatedExpense = await Expense.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      { new: true }
+    );
+    res.json(updatedExpense);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
