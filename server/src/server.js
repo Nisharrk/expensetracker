@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 // router
 app.use("/api/expenses", expenses);
 
-// Error Handlers
+// Error Handlers, see middlewares.js
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
