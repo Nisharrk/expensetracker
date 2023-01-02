@@ -6,4 +6,4 @@
 
 - Backend: node, express, cors, helmet, morgan
 - Database: mongodb, mongoose
-- Frontend: TBD
+- Frontend: react
