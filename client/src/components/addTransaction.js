@@ -32,7 +32,7 @@ export const AddTransaction = () => {
 
   return (
     <div>
-      <h3>Add New Transaction</h3>
+      <h3>Add New Expense</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="name">Name</label>
