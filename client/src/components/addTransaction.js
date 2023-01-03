@@ -6,12 +6,36 @@ export const AddTransaction = () => {
   const [amount, setAmount] = useState(0);
   const [notes, setNotes] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const body = { name, amount, notes };
+      const response = await fetch("http://localhost:8080/api/expenses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+
+    setName("");
+    setAmount(0);
+    setNotes("");
+
+    e.target.reset();
+  };
+
   return (
     <div>
       <h3>Add New Transaction</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label htmlFor="name">Text</label>
+          <label htmlFor="name">Name</label>
           <input
             type="text"
             value={name}
@@ -37,7 +61,9 @@ export const AddTransaction = () => {
             placeholder="Enter notes..."
           />
         </div>
-        <button class="btn">Add transaction</button>
+        <button type="submit" className="btn">
+          Add transaction
+        </button>
       </form>
     </div>
   );
