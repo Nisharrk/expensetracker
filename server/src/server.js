@@ -18,11 +18,7 @@ const app = express();
 
 app.use(morgan("common"));
 app.use(helmet());
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-  })
-); //to-do
+app.use(cors());
 app.use(express.json()); // body parsing middleware
 
 const port = process.env.PORT;
