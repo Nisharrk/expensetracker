@@ -2,7 +2,7 @@ import "./App.css";
 import { Header } from "./components/header.js";
 import { TotalExpense } from "./components/totalExpense.js";
 import { ExpenseList } from "./components/expenseList";
-import { AddTransaction } from "./components/addTransaction";
+import { AddExpense } from "./components/addExpense";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <div className="container">
         <TotalExpense />
         <ExpenseList />
-        <AddTransaction />
+        <AddExpense />
       </div>
     </div>
   );

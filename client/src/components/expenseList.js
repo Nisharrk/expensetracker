@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { DeleteExpense } from "./deleteExpense";
 
 export const ExpenseList = () => {
   const [expenses, setExpenses] = useState([]);
@@ -24,7 +25,12 @@ export const ExpenseList = () => {
         {expenses.map((expense) => (
           <li key={expense._id} className="minus">
             {expense.name} <span>{expense.amount}</span>
-            <button className="delete-btn">x</button>
+            <button
+              onClick={() => DeleteExpense(expense._id)}
+              className="delete-btn"
+            >
+              x
+            </button>
           </li>
         ))}
       </ul>
