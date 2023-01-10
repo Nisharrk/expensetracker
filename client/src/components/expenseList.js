@@ -18,6 +18,10 @@ export const ExpenseList = () => {
     fetchExpenses();
   }, []);
 
+  const handleDelete = (expenseId) => {
+    DeleteExpense(expenseId, expenses, setExpenses);
+  };
+
   return (
     <div>
       <h3>Expenses</h3>
@@ -26,7 +30,7 @@ export const ExpenseList = () => {
           <li key={expense._id} className="minus">
             {expense.name} <span>{expense.amount}</span>
             <button
-              onClick={() => DeleteExpense(expense._id)}
+              onClick={() => handleDelete(expense._id)}
               className="delete-btn"
             >
               x
