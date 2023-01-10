@@ -48,4 +48,20 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+router.get("/sum", async (req, res, next) => {
+  try {
+    const total = await Expense.aggregate([
+      {
+        $group: {
+          _id: null,
+          total: { $sum: "$amount" },
+        },
+      },
+    ]);
+    res.json(total);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
